@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Gestor de Tareas</h1>
+        <nav>
+            {% if session.get('loggedin') %}
+                <p>Hola, {{ session.username }} | <a href="{{ url_for('logout') }}">Cerrar Sesión</a></p>
+            {% else %}
+                <a href="{{ url_for('login') }}">Iniciar Sesión</a> | <a href="{{ url_for('register') }}">Registrarse</a>
+            {% endif %}
+        </nav>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Añadir un Amigo</h2>
+    <form method="POST" action="{{ url_for('add_friend') }}">
+        <label for="friend_code">Código de Amigo:</label>
+        <input type="text" name="friend_code" id="friend_code" required>
+        <button type="submit" class="btn">Añadir Amigo</button>
+    </form>
+    <p>Tu código de amigo es: <strong>{{ session.friend_code }}</strong></p>
+{% endblock %}

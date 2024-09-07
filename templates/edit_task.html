@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Editar Tarea</h2>
+    <form method="POST">
+        <label for="title">Título:</label>
+        <input type="text" name="title" id="title" value="{{ task.title }}" required>
+        
+        <label for="description">Descripción:</label>
+        <textarea name="description" id="description">{{ task.description }}</textarea>
+        
+        <button type="submit" class="btn">Actualizar</button>
+    </form>
+    <a href="{{ url_for('index') }}">Volver</a>
+{% endblock %}
